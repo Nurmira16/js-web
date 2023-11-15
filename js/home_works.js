@@ -12,3 +12,17 @@ gmailButton.addEventListener("click", () => {
     gmailSpan.style.color = "red";
   }
 });
+
+const cube = document.querySelector(".child_block");
+const box = document.querySelector(".parent_block");
+const boxSize = box.clientWidth - cube.clientWidth;
+
+function moveRight(left) {
+  if (left <= boxSize) {
+    setTimeout(() => {
+      cube.style.left = left + "px";
+      moveRight(left + 5);
+    }, 50);
+  }
+}
+moveRight(0);
