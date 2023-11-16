@@ -14,15 +14,15 @@ gmailButton.addEventListener("click", () => {
 });
 
 const cube = document.querySelector(".child_block");
-const box = document.querySelector(".parent_block");
-const boxSize = box.clientWidth - cube.clientWidth;
 
-function moveRight(left) {
-  if (left <= boxSize) {
-    setTimeout(() => {
-      cube.style.left = left + "px";
-      moveRight(left + 5);
-    }, 50);
+let positionY = 0;
+let positionX = 0;
+
+const moveCube = () => {
+  if (positionX <= 447 && positionY == 0) {
+    positionX++;
+    cube.style.left = `${positionX}px`;
   }
-}
-moveRight(0);
+  requestAnimationFrame(moveCube);
+};
+moveCube();
