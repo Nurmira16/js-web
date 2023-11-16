@@ -22,6 +22,15 @@ const moveCube = () => {
   if (positionX <= 447 && positionY == 0) {
     positionX++;
     cube.style.left = `${positionX}px`;
+  } else if (positionX >= 447 && positionY <= 447) {
+    positionY++;
+    cube.style.top = `${positionY}px`;
+  } else if (positionX > 0 && positionY >= 447) {
+    positionX--;
+    cube.style.left = `${positionX}px`;
+  } else if (positionX == 0 && positionY > 0) {
+    positionY--;
+    cube.style.top = `${positionY}px`;
   }
   requestAnimationFrame(moveCube);
 };
