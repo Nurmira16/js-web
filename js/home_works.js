@@ -35,3 +35,19 @@ const moveCube = () => {
   requestAnimationFrame(moveCube);
 };
 moveCube();
+
+const second = document.getElementById("seconds");
+const startTimer = document.getElementById("start");
+const stopTimer = document.getElementById("stop");
+const resetTimer = document.getElementById("reset");
+let sec = 0;
+let intervalId;
+
+const startSec = () => {
+  clearInterval(intervalId);
+  intervalId = setInterval(() => {
+    sec++;
+    second.innerHTML = sec;
+  }, 500);
+};
+startTimer.addEventListener("click", startSec);
