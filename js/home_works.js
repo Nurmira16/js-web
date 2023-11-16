@@ -50,4 +50,8 @@ const startSec = () => {
     second.innerHTML = sec;
   }, 500);
 };
+const stopSec = () => {
+  clearInterval(intervalId);
+};
 startTimer.addEventListener("click", startSec);
+stopTimer.addEventListener("click", stopSec);
