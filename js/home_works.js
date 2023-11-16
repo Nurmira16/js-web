@@ -53,5 +53,11 @@ const startSec = () => {
 const stopSec = () => {
   clearInterval(intervalId);
 };
+const resetSec = () => {
+  second.innerHTML = "0";
+  sec = 0;
+};
+
 startTimer.addEventListener("click", startSec);
 stopTimer.addEventListener("click", stopSec);
+resetTimer.addEventListener("click", resetSec);
