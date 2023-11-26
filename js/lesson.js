@@ -15,34 +15,29 @@ phone_button.addEventListener("click", () => {
 // end phone checker
 
 // start tab slider
-
-const tabBlock = document.querySelectorAll(".tab_content_block");
-const tabItems = document.querySelector(".tab_content_items");
+const tabsBlock = document.querySelectorAll(".tab_content_block");
 const tabItem = document.querySelectorAll(".tab_content_item");
+const itemBlock = document.querySelector(".tab_content_items");
 const hide = () => {
-  tabBlock.forEach((tab) => {
-    tab.style.display = "none";
+  tabsBlock.forEach((block) => {
+    block.style.display = "none";
   });
-
   tabItem.forEach((item) => {
     item.classList.remove("tab_content_item_active");
   });
 };
-
-const show = (index = 0) => {
-  tabBlock[index].style.display = "block";
-  tabItem[index].classList.add("tab_content_item_active");
-};
-
-tabItems.onclick = (event) => {
-  if (event.target.classList.contains("tab_content_item")) {
-    tabItem.forEach((tab, tabIndex) => {
-      if (event.target == tab) {
-        hide();
-        show(tabIndex);
-      }
+const show = () => {
+  let index = 0;
+  setInterval(() => {
+    hide();
+    tabsBlock[index].style.display = "block";
+    tabItem.forEach((item) => {
+      item.classList.remove("tab_content_item_active");
     });
-  }
+    tabItem[index].classList.add("tab_content_item_active");
+    index = (index + 1) % tabsBlock.length;
+  }, 2000);
 };
+
 hide();
 show();
