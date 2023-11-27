@@ -19,4 +19,4 @@ const openModal = () => {
   document.body.style.overflow = "hidden";
 };
 
-setTimeout(openModal, 5000);
+// setTimeout(openModal, 5000);

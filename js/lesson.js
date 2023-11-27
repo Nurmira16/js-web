@@ -53,3 +53,24 @@ itemBlock.onclick = (event) => {
     });
   }
 };
+// JSON part
+
+const request = new XMLHttpRequest();
+request.open("GET", "/data.json");
+request.setRequestHeader("Content-type", "aaplication/json");
+request.send();
+
+request.addEventListener("load", function () {
+  const container = document.querySelector(".containerJson");
+
+  const data = JSON.parse(request.responseText);
+  data.forEach((subject) => {
+    const newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "newJson");
+    newDiv.innerHTML = `
+    <h3>${subject.topic}</h3>
+    <p>${subject.description}</p>
+    `;
+    container.append(newDiv);
+  });
+});
