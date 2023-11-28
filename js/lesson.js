@@ -74,3 +74,26 @@ request.addEventListener("load", function () {
     container.append(newDiv);
   });
 });
+
+// JSON subject end
+
+const som = document.getElementById("som");
+
+const usd = document.getElementById("usd");
+
+const converter = (element, targetElement, type) => {
+  element.oninput = () => {
+    const request = new XMLHttpRequest();
+    request.open("GET", "../data/converter.json");
+    request.setRequestHeader("Content-type", "application/json");
+    request.send();
+    request.onload = () => {
+      const data = JSON.parse(request.response);
+      if (type === "som") {
+        targetElement.value = (element.value / data.usd).toFixed(2);
+      }
+    };
+  };
+};
+
+converter(som, usd, "som");
