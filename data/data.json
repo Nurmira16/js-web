@@ -1,0 +1,17 @@
+[
+  {
+    "topic": "JSON",
+    "description": "JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate",
+    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww"
+  },
+  {
+    "topic": "AJAX",
+    "description": "set of web development techniques that allows web pages to be updated asynchronously by exchanging small amounts of data with the server behind the scenes.",
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cntraveller.com%2Fgallery%2Fnature-positive-travel&psig=AOvVaw0iyeurSb4UNZ7NAl_D6tL0&ust=1701199502138000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDK65H05IIDFQAAAAAdAAAAABAE"
+  },
+  {
+    "topic": "XML",
+    "description": " markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable",
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cntraveller.com%2Fgallery%2Fnature-positive-travel&psig=AOvVaw0iyeurSb4UNZ7NAl_D6tL0&ust=1701199502138000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDK65H05IIDFQAAAAAdAAAAABAE"
+  }
+]

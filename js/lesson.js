@@ -56,7 +56,7 @@ itemBlock.onclick = (event) => {
 // JSON part
 
 const request = new XMLHttpRequest();
-request.open("GET", "/data.json");
+request.open("GET", "../data/data.json");
 request.setRequestHeader("Content-type", "aaplication/json");
 request.send();
 
