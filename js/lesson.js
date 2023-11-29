@@ -81,7 +81,7 @@ const som = document.getElementById("som");
 const usd = document.getElementById("usd");
 const euro = document.getElementById("eur");
 
-const converter = (element, targetElement, type) => {
+const converter = (element, targetElement, targetElement2, type) => {
   element.oninput = () => {
     const request = new XMLHttpRequest();
     request.open("GET", "../data/converter.json");
@@ -94,20 +94,29 @@ const converter = (element, targetElement, type) => {
       switch (type) {
         case "som":
           targetElement.value = (element.value / data.usd).toFixed(2);
+          targetElement2.value = (element.value * data.euro).toFixed(2);
           break;
         case "usd":
           targetElement.value = (element.value * data.usd).toFixed(2);
+          targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
           break;
         case "eur":
+          targetElement.value = (element.value * data.usdtoeur).toFixed(2);
+          targetElement2.value = (element.value * data.eurtosom).toFixed(2);
+          break;
         default:
           break;
       }
       // element.value === "" ? (targetElement.value = "") : null;
-      element.value === "" && (targetElement.value = "");
+      if (element.value === "") {
+        targetElement.value = "";
+        targetElement2.value = "";
+      }
     };
   };
 };
 
-converter(som, usd, "som");
+converter(som, usd, euro, "som");
 
-converter(usd, som, "usd");
+converter(usd, som, euro, "usd");
+converter(euro, usd, som, "eur");
