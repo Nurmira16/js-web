@@ -78,8 +78,8 @@ request.addEventListener("load", function () {
 // JSON subject end
 
 const som = document.getElementById("som");
-
 const usd = document.getElementById("usd");
+const euro = document.getElementById("eur");
 
 const converter = (element, targetElement, type) => {
   element.oninput = () => {
@@ -87,13 +87,27 @@ const converter = (element, targetElement, type) => {
     request.open("GET", "../data/converter.json");
     request.setRequestHeader("Content-type", "application/json");
     request.send();
+
     request.onload = () => {
       const data = JSON.parse(request.response);
-      if (type === "som") {
-        targetElement.value = (element.value / data.usd).toFixed(2);
+
+      switch (type) {
+        case "som":
+          targetElement.value = (element.value / data.usd).toFixed(2);
+          break;
+        case "usd":
+          targetElement.value = (element.value * data.usd).toFixed(2);
+          break;
+        case "eur":
+        default:
+          break;
       }
+      // element.value === "" ? (targetElement.value = "") : null;
+      element.value === "" && (targetElement.value = "");
     };
   };
 };
 
 converter(som, usd, "som");
+
+converter(usd, som, "usd");
