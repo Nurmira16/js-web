@@ -20,3 +20,27 @@ const openModal = () => {
 };
 
 // setTimeout(openModal, 5000);
+
+//POST DATA
+
+const formElement = document.querySelector("form");
+
+const postData = (form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const request = new XMLHttpRequest();
+    request.open("POST", "server.php");
+    request.setRequestHeader("Content-type", "application.json");
+
+    const formData = new FormData();
+    const obj = {};
+    formData.forEach((item, index) => {
+      obj[index] = item;
+    });
+    const data = JSON.stringify(obj);
+    request.send(data);
+  });
+};
+
+postData(formElement);
