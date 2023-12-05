@@ -22,25 +22,51 @@ const openModal = () => {
 // setTimeout(openModal, 5000);
 
 //POST DATA
+const formElement = document.getElementById("form");
 
-const formElement = document.querySelector("form");
+// const postData = (form) => {
+//   form.addEventListener("submit", (event) => {
+//     event.preventDefault();
 
-const postData = (form) => {
+//     const request = new XMLHttpRequest();
+//     request.open("POST", "server.php");
+//     request.setRequestHeader("Content-type", "application/json");
+
+//     const data = new FormData(form);
+//     const obj = {};
+//     data.forEach((item, index) => {
+//       obj[index] = item;
+//     });
+//     const json = JSON.stringify(obj);
+//     request.send(json);
+//   });
+// };
+// postData(formElement);
+
+const postData = (url, data) => {
+  const response = fetch(url, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: data,
+  });
+  return response;
+};
+const bindPostdata = (form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const request = new XMLHttpRequest();
-    request.open("POST", "server.php");
-    request.setRequestHeader("Content-type", "application.json");
-
-    const formData = new FormData();
+    const data = new FormData(form);
     const obj = {};
-    formData.forEach((item, index) => {
+    data.forEach((item, index) => {
       obj[index] = item;
     });
-    const data = JSON.stringify(obj);
-    request.send(data);
+    const json = JSON.stringify(obj);
+
+    if ((window.location.pathname = "/js-web/index.html")) {
+      postData("server.php", json);
+    } else {
+      postData("../server.php", json);
+    }
   });
 };
-
-postData(formElement);
+bindPostdata(formElement);

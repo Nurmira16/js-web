@@ -117,6 +117,28 @@ const converter = (element, targetElement, targetElement2, type) => {
 };
 
 converter(som, usd, euro, "som");
-
 converter(usd, som, euro, "usd");
 converter(euro, usd, som, "eur");
+
+// CARD SWITCHER
+
+const card = document.querySelector(".card");
+const btnPrev = document.querySelector("#btn-prev");
+const btnNext = document.querySelector("#btn-next");
+let id = 1;
+const fetching = () => {
+  fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .then((response) => response.json())
+    .then((json) => {
+      card.innerHTML = `
+     <p>${json.id}</p>
+     <p style="color: ${json.completed ? "green" : "red"}">${json.completed}</p>
+     `;
+    });
+};
+fetching();
+
+btnNext.addEventListener("click", () => {
+  id++;
+  fetching();
+});
