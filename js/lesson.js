@@ -125,8 +125,8 @@ converter(euro, usd, som, "eur");
 const card = document.querySelector(".card");
 const btnPrev = document.querySelector("#btn-prev");
 const btnNext = document.querySelector("#btn-next");
-let id = 1;
-const fetching = () => {
+let count = 1;
+const fetching = (id) => {
   fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
     .then((response) => response.json())
     .then((json) => {
@@ -136,9 +136,27 @@ const fetching = () => {
      `;
     });
 };
-fetching();
+fetching(count);
 
 btnNext.addEventListener("click", () => {
-  id++;
-  fetching();
+  count++;
+  if (count < 200) {
+    count++;
+    fetching(count);
+  } else {
+    count = 1;
+    fetching(count);
+  }
+});
+
+btnPrev.addEventListener("click", () => {
+  // if (count > 1) {
+  //   count--;
+  //   fetching(count);
+  // } else {
+  //   count = 200;
+  //   fetching(count);
+  // }
+  count > 1 ? count-- : (count = 200);
+  fetching(count);
 });
