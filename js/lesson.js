@@ -164,13 +164,13 @@ btnPrev.addEventListener("click", () => {
 // WEATHER SEARCH
 
 const citySearchInput = document.querySelector(".cityName"),
-  searchBtn = document.querySelector("#search"),
+  // searchBtn = document.querySelector("#search"),
   city = document.querySelector(".city"),
   temp = document.querySelector(".temp");
 
-searchBtn.onclick = () => {
+citySearchInput.oninput = (event) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&appid=e417df62e04d3b1b111abeab19cea714`
+    `https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}&appid=e417df62e04d3b1b111abeab19cea714`
   )
     .then((response) => response.json())
     .then((data) => {
