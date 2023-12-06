@@ -160,3 +160,22 @@ btnPrev.addEventListener("click", () => {
   count > 1 ? count-- : (count = 200);
   fetching(count);
 });
+
+// WEATHER SEARCH
+
+const citySearchInput = document.querySelector(".cityName"),
+  searchBtn = document.querySelector("#search"),
+  city = document.querySelector(".city"),
+  temp = document.querySelector(".temp");
+
+searchBtn.onclick = () => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&appid=e417df62e04d3b1b111abeab19cea714`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      city.innerHTML = data.name ? data.name : "Город не выбран";
+      temp.innerHTML = Math.round(data.main.temp - 273) + "&deg;C";
+    });
+};
+// optional chain ?.
