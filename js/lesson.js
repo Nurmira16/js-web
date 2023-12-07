@@ -55,15 +55,30 @@ itemBlock.onclick = (event) => {
 };
 // JSON part
 
-const request = new XMLHttpRequest();
-request.open("GET", "../data/data.json");
-request.setRequestHeader("Content-type", "aaplication/json");
-request.send();
+// const request = new XMLHttpRequest();
+// request.open("GET", "../data/data.json");
+// request.setRequestHeader("Content-type", "aaplication/json");
+// request.send();
 
-request.addEventListener("load", function () {
-  const container = document.querySelector(".containerJson");
+// request.addEventListener("load", function () {
+//   const container = document.querySelector(".containerJson");
 
-  const data = JSON.parse(request.responseText);
+//   const data = JSON.parse(request.responseText);
+//   data.forEach((subject) => {
+//     const newDiv = document.createElement("div");
+//     newDiv.setAttribute("class", "newJson");
+//     newDiv.innerHTML = `
+//     <h3>${subject.topic}</h3>
+//     <p>${subject.description}</p>
+//     `;
+//     container.append(newDiv);
+//   });
+// });
+const container = document.querySelector(".containerJson");
+const fetchData = async () => {
+  const response = await fetch("../data/data.json");
+  const data = await response.json();
+
   data.forEach((subject) => {
     const newDiv = document.createElement("div");
     newDiv.setAttribute("class", "newJson");
@@ -73,7 +88,8 @@ request.addEventListener("load", function () {
     `;
     container.append(newDiv);
   });
-});
+};
+fetchData();
 
 // JSON subject end
 
@@ -82,37 +98,62 @@ const usd = document.getElementById("usd");
 const euro = document.getElementById("eur");
 
 const converter = (element, targetElement, targetElement2, type) => {
-  element.oninput = () => {
-    const request = new XMLHttpRequest();
-    request.open("GET", "../data/converter.json");
-    request.setRequestHeader("Content-type", "application/json");
-    request.send();
+  // element.oninput = () => {
+  //   const request = new XMLHttpRequest();
+  //   request.open("GET", "../data/converter.json");
+  //   request.setRequestHeader("Content-type", "application/json");
+  //   request.send();
+  //   request.onload = () => {
+  //     const data = JSON.parse(request.response);
+  //     switch (type) {
+  //       case "som":
+  //         targetElement.value = (element.value / data.usd).toFixed(2);
+  //         targetElement2.value = (element.value * data.euro).toFixed(2);
+  //         break;
+  //       case "usd":
+  //         targetElement.value = (element.value * data.usd).toFixed(2);
+  //         targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
+  //         break;
+  //       case "eur":
+  //         targetElement.value = (element.value * data.usdtoeur).toFixed(2);
+  //         targetElement2.value = (element.value * data.eurtosom).toFixed(2);
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //     // element.value === "" ? (targetElement.value = "") : null;
+  //     if (element.value === "") {
+  //       targetElement.value = "";
+  //       targetElement2.value = "";
+  //     }
+  //   };
+  // };
 
-    request.onload = () => {
-      const data = JSON.parse(request.response);
+  element.oninput = async () => {
+    const response = await fetch("../data/converter.json");
+    const data = await response.json();
 
-      switch (type) {
-        case "som":
-          targetElement.value = (element.value / data.usd).toFixed(2);
-          targetElement2.value = (element.value * data.euro).toFixed(2);
-          break;
-        case "usd":
-          targetElement.value = (element.value * data.usd).toFixed(2);
-          targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
-          break;
-        case "eur":
-          targetElement.value = (element.value * data.usdtoeur).toFixed(2);
-          targetElement2.value = (element.value * data.eurtosom).toFixed(2);
-          break;
-        default:
-          break;
-      }
-      // element.value === "" ? (targetElement.value = "") : null;
-      if (element.value === "") {
-        targetElement.value = "";
-        targetElement2.value = "";
-      }
-    };
+    switch (type) {
+      case "som":
+        targetElement.value = (element.value / data.usd).toFixed(2);
+        targetElement2.value = (element.value * data.euro).toFixed(2);
+        break;
+      case "usd":
+        targetElement.value = (element.value * data.usd).toFixed(2);
+        targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
+        break;
+      case "eur":
+        targetElement.value = (element.value * data.usdtoeur).toFixed(2);
+        targetElement2.value = (element.value * data.eurtosom).toFixed(2);
+        break;
+      default:
+        break;
+    }
+    // element.value === "" ? (targetElement.value = "") : null;
+    if (element.value === "") {
+      targetElement.value = "";
+      targetElement2.value = "";
+    }
   };
 };
 
@@ -126,27 +167,40 @@ const card = document.querySelector(".card");
 const btnPrev = document.querySelector("#btn-prev");
 const btnNext = document.querySelector("#btn-next");
 let count = 1;
-const fetching = (id) => {
-  fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
-    .then((response) => response.json())
-    .then((json) => {
-      card.innerHTML = `
-     <p>${json.id}</p>
-     <p style="color: ${json.completed ? "green" : "red"}">${json.completed}</p>
+// const fetching = (id) => {
+//   fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+//     .then((response) => response.json())
+//     .then((json) => {
+//       card.innerHTML = `
+//      <p>${json.id}</p>
+//      <p style="color: ${json.completed ? "green" : "red"}">${json.completed}</p>
+//      `;
+//     });
+// };
+const fetching = async (id) => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${id}`
+  );
+  const data = await response.json();
+
+  card.innerHTML = `
+     <p>${data.id}</p>
+     <p style="color: ${data.completed ? "green" : "red"}">${data.completed}</p>
      `;
-    });
 };
 fetching(count);
 
 btnNext.addEventListener("click", () => {
-  count++;
-  if (count < 200) {
-    count++;
-    fetching(count);
-  } else {
-    count = 1;
-    fetching(count);
-  }
+  // count++;
+  // if (count < 200) {
+  //   count++;
+  //   fetching(count);
+  // } else {
+  //   count = 1;
+  //   fetching(count);
+  // }
+  count < 200 ? count++ : (count = 1);
+  fetching(count);
 });
 
 btnPrev.addEventListener("click", () => {
@@ -167,15 +221,29 @@ const citySearchInput = document.querySelector(".cityName"),
   // searchBtn = document.querySelector("#search"),
   city = document.querySelector(".city"),
   temp = document.querySelector(".temp");
+const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
+const API_KEY = "e417df62e04d3b1b111abeab19cea714";
 
-citySearchInput.oninput = (event) => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}&appid=e417df62e04d3b1b111abeab19cea714`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      city.innerHTML = data.name ? data.name : "Город не выбран";
-      temp.innerHTML = Math.round(data.main.temp - 273) + "&deg;C";
-    });
-};
+// citySearchInput.oninput = (event) => {
+//   fetch(`${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       city.innerHTML = data?.name ? data?.name : "Город не выбран";
+//       temp.innerHTML = data?.main?.temp
+//         ? Math.round(data?.main?.temp - 273) + "&deg;C"
+//         : "...";
+//     });
+// };
 // optional chain ?.
+
+citySearchInput.oninput = async (event) => {
+  const response = await fetch(
+    `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
+  );
+  const data = await response.json();
+
+  city.innerHTML = data?.name ? data?.name : "Город не выбран";
+  temp.innerHTML = data?.main?.temp
+    ? Math.round(data?.main?.temp - 273) + "&deg;C"
+    : "...";
+};

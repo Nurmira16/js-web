@@ -43,8 +43,8 @@ const formElement = document.getElementById("form");
 // };
 // postData(formElement);
 
-const postData = (url, data) => {
-  const response = fetch(url, {
+const postData = async (url, data) => {
+  const response = await fetch(url, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: data,
