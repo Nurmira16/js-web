@@ -1,0 +1,26 @@
+.card-block {
+  background: black;
+  height: calc(100vh - 180px);
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 50px;
+}
+p {
+  color: white;
+}
+.card-item {
+  height: 200px;
+  width: 200px;
+  border: 1px solid orange;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
