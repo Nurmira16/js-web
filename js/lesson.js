@@ -76,6 +76,10 @@ itemBlock.onclick = (event) => {
 // });
 const container = document.querySelector(".containerJson");
 const fetchData = async () => {
+  try {
+  } catch (e) {
+    console.log(e);
+  }
   const response = await fetch("../data/data.json");
   const data = await response.json();
 
@@ -130,29 +134,33 @@ const converter = (element, targetElement, targetElement2, type) => {
   // };
 
   element.oninput = async () => {
-    const response = await fetch("../data/converter.json");
-    const data = await response.json();
+    try {
+      const response = await fetch("../data/converter.json");
+      const data = await response.json();
 
-    switch (type) {
-      case "som":
-        targetElement.value = (element.value / data.usd).toFixed(2);
-        targetElement2.value = (element.value * data.euro).toFixed(2);
-        break;
-      case "usd":
-        targetElement.value = (element.value * data.usd).toFixed(2);
-        targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
-        break;
-      case "eur":
-        targetElement.value = (element.value * data.usdtoeur).toFixed(2);
-        targetElement2.value = (element.value * data.eurtosom).toFixed(2);
-        break;
-      default:
-        break;
-    }
-    // element.value === "" ? (targetElement.value = "") : null;
-    if (element.value === "") {
-      targetElement.value = "";
-      targetElement2.value = "";
+      switch (type) {
+        case "som":
+          targetElement.value = (element.value / data.usd).toFixed(2);
+          targetElement2.value = (element.value * data.euro).toFixed(2);
+          break;
+        case "usd":
+          targetElement.value = (element.value * data.usd).toFixed(2);
+          targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
+          break;
+        case "eur":
+          targetElement.value = (element.value * data.usdtoeur).toFixed(2);
+          targetElement2.value = (element.value * data.eurtosom).toFixed(2);
+          break;
+        default:
+          break;
+      }
+      // element.value === "" ? (targetElement.value = "") : null;
+      if (element.value === "") {
+        targetElement.value = "";
+        targetElement2.value = "";
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 };
@@ -178,15 +186,21 @@ let count = 1;
 //     });
 // };
 const fetching = async (id) => {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/todos/${id}`
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${id}`
+    );
+    const data = await response.json();
 
-  card.innerHTML = `
-     <p>${data.id}</p>
-     <p style="color: ${data.completed ? "green" : "red"}">${data.completed}</p>
-     `;
+    card.innerHTML = `
+       <p>${data.id}</p>
+       <p style="color: ${data.completed ? "green" : "red"}">${
+      data.completed
+    }</p>
+       `;
+  } catch (e) {
+    console.log(e);
+  }
 };
 fetching(count);
 
@@ -237,13 +251,17 @@ const API_KEY = "e417df62e04d3b1b111abeab19cea714";
 // optional chain ?.
 
 citySearchInput.oninput = async (event) => {
-  const response = await fetch(
-    `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
+    );
+    const data = await response.json();
 
-  city.innerHTML = data?.name ? data?.name : "Город не выбран";
-  temp.innerHTML = data?.main?.temp
-    ? Math.round(data?.main?.temp - 273) + "&deg;C"
-    : "...";
+    city.innerHTML = data?.name ? data?.name : "Город не выбран";
+    temp.innerHTML = data?.main?.temp
+      ? Math.round(data?.main?.temp - 273) + "&deg;C"
+      : "...";
+  } catch (e) {
+    console.log(e);
+  }
 };
