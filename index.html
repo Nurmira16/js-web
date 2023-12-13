@@ -2,9 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Java Script</title>
+    <title>Nurmira</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/core.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Montserrat:wght@400;500&family=Raleway:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
@@ -14,18 +24,18 @@
           <div class="inner_header">
             <a href="index.html">
               <div class="logotype">
-                <h2>JavaScript</h2>
+                <img id="logo" src="./assets/mainlogo.png" alt="logo" />
               </div>
             </a>
             <ul class="menu">
               <li class="menu_link">
-                <a href="pages/home_works.html">Homeworks</a>
+                <a href="pages/home_works.html">About</a>
               </li>
               <li class="menu_link">
-                <a href="pages/lessons.html">Lessons</a>
+                <a href="pages/lessons.html">Skills</a>
               </li>
               <li class="menu_link">
-                <a href="pages/cards.html">Cards</a>
+                <a href="pages/cards.html">Projects</a>
               </li>
             </ul>
             <button class="btn" id="btn-get">Click me!</button>
@@ -35,20 +45,27 @@
       <div class="main_block">
         <div class="container">
           <div class="inner_main">
-            <h1>
-              <strong id="js-color">JavaScript</strong> - Simple and Easy to
-              Learn!
-            </h1>
+            <div class="mainImage">
+              <img src="./assets/mainlogo.png" id="backLogo" alt="" />
+              <img src="./assets/me-transformed.png" id="mainMe" alt="me" />
+            </div>
+            <div class="mainText">
+              <h2>Hello!</h2>
+              <p>
+                <span id="js-color">I’m Nurmira,</span> Frontend Developer.
+                Welcome to my presonal website
+              </p>
+            </div>
             <div class="colors-buttons">
-              <button class="btn btn-color"></button>
-              <button class="btn btn-color"></button>
-              <button class="btn btn-color"></button>
-              <button class="btn btn-color"></button>
+              <button class="btn-color"></button>
+              <button class="btn-color"></button>
+              <button class="btn-color"></button>
+              <button class="btn-color"></button>
             </div>
           </div>
         </div>
       </div>
-      <div class="slider_block">
+      <!-- <div class="slider_block">
         <div class="container">
           <div class="inner_slider">
             <div class="slider">
@@ -119,9 +136,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="botlle">
+      <!-- <div class="botlle">
         <div class="container">
           <div class="bottle_inner">
             <a href="pages/monster.html">
@@ -132,24 +149,123 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="block_video">
+      <!-- <div class="block_video">
         <div class="container">
           <h3>Useful video for Event Loop</h3>
-          <!-- <div class="inner_block_video">
-                                <iframe width="80%" height="450" src="https://www.youtube.com/embed/zDlg64fsQow" title="YouTube video player" frameborder="2" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div> -->
+          <div class="inner_block_video">
+            <iframe
+              width="80%"
+              height="450"
+              src="https://www.youtube.com/embed/zDlg64fsQow"
+              title="YouTube video player"
+              frameborder="2"
+              allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div> -->
+      <div id="skills">
+        <div class="title">
+          <span id="firstPartTitle">Sk</span><span id="secondPartTitle">i</span
+          ><span id="firstPartTitle">lls</span>
+        </div>
+        <div class="ornament"></div>
+        <div class="react-outline">
+          <div class="react">
+            <p>React</p>
+          </div>
+        </div>
+        <div class="html-outline">
+          <div class="html">
+            <p>Html</p>
+          </div>
+        </div>
+        <div class="css-outline">
+          <div class="css">
+            <p>Css</p>
+          </div>
+        </div>
+        <div class="git-outline">
+          <div class="git">
+            <div class="git-circle">
+              <div class="git-inner"></div>
+            </div>
+            <p>Git</p>
+          </div>
+        </div>
+        <div class="eng-outline">
+          <div class="eng">
+            <p>English C1</p>
+          </div>
+        </div>
+        <div class="figma-outline">
+          <div class="figma">
+            <p>Figma</p>
+          </div>
+        </div>
+        <div class="tur-outline">
+          <div class="turkish">
+            <p>Turkish C2</p>
+          </div>
+        </div>
+        <div class="js-outline">
+          <div class="js">
+            <p>JS</p>
+          </div>
+        </div>
+        <div class="rus-outline">
+          <div class="rus">
+            <p>Russian C2</p>
+          </div>
         </div>
       </div>
-
       <div class="footer">
-        <div class="container">
-          <a href="https://www.instagram.com/nurdinbuy/" target="_blank">
-            <div class="inner_footer">
-              <h2>Made by Nurmira</h2>
+        <div class="inner-footer">
+          <div class="links">
+            <ul>
+              <li>
+                <a href="https://www.instagram.com/nurmira116/"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/nurmirazhorobekkyzy/"
+                  ><i class="fa fa-linkedin-square"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://github.com/Nurmira16"
+                  ><i class="fa fa-github"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="page-links">
+            <div class="inner_header">
+              <ul class="menu">
+                <li class="menu_link">
+                  <a href="pages/home_works.html">About</a>
+                </li>
+                <li class="menu_link">
+                  <a href="#skills">Skills</a>
+                </li>
+                <li class="menu_link">
+                  <a href="pages/cards.html">Projects</a>
+                </li>
+              </ul>
             </div>
-          </a>
+          </div>
+          <div class="mini-info">
+            <div class="circle"></div>
+            <p>Currently in Warsaw, PL</p>
+          </div>
+        </div>
+        <div class="p">
+          Loosely designed in Figma and coded in Visual Studio Code by yours
+          truly
         </div>
       </div>
     </div>

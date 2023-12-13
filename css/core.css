@@ -5,28 +5,29 @@
 }
 
 .container {
-  width: 1200px;
+  width: 1500px;
   margin: 0 auto;
 }
 
 body {
-  font-family: "Britannic Bold", sans-serif;
-  background: #c2d0d0;
+  font-family: "Montserrat", sans-serif;
+  /* background: #c2d0d0; */
 }
 
 .btn {
-  width: 250px;
+  width: 100px;
   height: 50px;
   font-size: 20px;
   cursor: pointer;
-  border: 1px solid var(--orange);
+  border: 1px solid var(--bardo);
   background: black;
-  color: var(--orange);
+  color: var(--bardo);
   border-radius: 8px;
 }
 
 .btn:hover {
-  background: #414349;
+  background: var(--bardo);
+  color: var(--black);
 }
 
 .btn:active {
@@ -84,6 +85,27 @@ label {
   font-size: 24px;
   color: var(--orange);
 }
+.title {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+#firstPartTitle {
+  color: black;
+  font-size: 64px;
+  font-family: Montserrat Alternates;
+  font-weight: 600;
+  line-height: 76.8px;
+  word-wrap: break-word;
+}
+#secondPartTitle {
+  color: #a90d0d;
+  font-size: 64px;
+  font-family: Montserrat Alternates;
+  font-weight: 600;
+  line-height: 76.8px;
+  word-wrap: break-word;
+}
 
 input {
   width: 350px;
@@ -121,4 +143,7 @@ input {
 
 :root {
   --orange: orange;
+  --black: black;
+  --bardo: #a90d0d;
+  --white: #ffff;
 }
