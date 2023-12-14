@@ -1,3 +1,32 @@
+const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
+const API_KEY = "e417df62e04d3b1b111abeab19cea714";
+const cityInput = document.querySelector("#city");
+const city = document.querySelector(".city");
+const temp = document.querySelector(".temp");
+const weatherIcon = document.querySelector(".weatherimage");
+
+cityInput.oninput = async (event) => {
+  const response = await fetch(
+    `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
+  );
+  const data = await response.json();
+
+  city.innerHTML = data?.name ? data?.name : "Choose city";
+  temp.innerHTML = data?.main?.temp
+    ? Math.round(data?.main?.temp - 273)
+    : "...";
+
+  if (temp.innerHTML > -Infinity && temp.innerHTML < 5) {
+    weatherIcon.style.backgroundImage =
+      'url("https://cdn.dribbble.com/users/2120934/screenshots/6193458/13_snow.gif")'; // Replace with the correct path for your winter image
+  } else if (temp.innerHTML > 5 && temp.innerHTML < 15) {
+    weatherIcon.style.backgroundImage =
+      'url("https://webstockreview.net/images/clipart-cloud-animated-gif-6.gif")'; // Replace with the correct path for your sun image
+  } else {
+    weatherIcon.style.backgroundImage =
+      'url("https://i.pinimg.com/originals/54/d3/ae/54d3ae04cae803cafc21389dfd31fc88.gif")';
+  }
+};
 //INTERSECTION OBSERVER
 
 const header = document.querySelector(".header");
@@ -121,3 +150,5 @@ prev.onclick = () => {
 };
 
 autoSlider(index);
+
+// Weather app

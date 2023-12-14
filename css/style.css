@@ -152,7 +152,8 @@
 .rus-outline,
 .git-outline,
 .figma-outline,
-.js-outline {
+.js-outline,
+.api-outline {
   border-radius: 50%;
   border: 2px dotted rgba(208, 207, 207, 0.6);
   position: absolute;
@@ -436,12 +437,85 @@
 }
 @keyframes orbit11 {
   from {
-    transform: rotate(0deg) translateX(420px) rotate(0deg);
+    transform: rotate(0deg) translateX(400px) rotate(0deg);
   }
   to {
     transform: rotate(360deg) translateX(400px) rotate(-360deg);
   }
 }
+.api {
+  height: 45px;
+  width: 45px;
+  background-image: url("../assets/api.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  position: absolute;
+  left: 53%;
+  top: 41%;
+  box-shadow: -4px 2px 56px #c1aa81;
+  transform: translate(-50%, -50%);
+  animation: orbit12 55s linear infinite;
+}
+.api-outline {
+  width: 900px;
+  height: 900px;
+}
+@keyframes orbit12 {
+  from {
+    transform: rotate(0deg) translateX(460px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(460px) rotate(-360deg);
+  }
+}
+
+/* PROJECTS */
+#projects {
+  height: 100vh;
+}
+.projectContainer {
+  height: 600px;
+  width: 600px;
+  box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.25);
+  border: 1px rgba(0, 0, 0, 0.13) solid;
+  border-radius: 16px;
+  margin: 250px auto;
+}
+.weatherapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.weatherimage {
+  height: 300px;
+  width: 300px;
+  margin: 20px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://www.pngmart.com/files/12/Sun-And-Cloud-PNG-HD.png");
+  transition: 1s ease;
+}
+.cityInfo {
+  width: 50%;
+  text-align: center;
+  margin: 20px;
+  font-size: 30px;
+}
+.description {
+  width: 70%;
+  font-size: 12px;
+  text-align: center;
+}
+.weatherapp p {
+  font-size: 25px;
+  margin-top: 5px;
+}
+
 /* FOOTER */
 
 .footer {
