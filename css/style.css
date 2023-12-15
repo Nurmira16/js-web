@@ -474,6 +474,8 @@
 /* PROJECTS */
 #projects {
   height: 100vh;
+  display: flex;
+  gap: 20px;
 }
 .projectContainer {
   height: 600px;
@@ -510,12 +512,41 @@
   width: 70%;
   font-size: 12px;
   text-align: center;
+  margin-top: 10px;
 }
 .weatherapp p {
   font-size: 25px;
   margin-top: 5px;
 }
+/* CONVERTER */
 
+.converter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.converter h3 {
+  color: black;
+}
+.inner-converter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.inner-converter > div {
+  display: flex;
+  flex-direction: column;
+}
+.converter input {
+  box-shadow: 0px 2px 5px 5px rgb(189, 189, 189);
+}
 /* FOOTER */
 
 .footer {

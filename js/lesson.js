@@ -97,10 +97,6 @@ fetchData();
 
 // JSON subject end
 
-const som = document.getElementById("som");
-const usd = document.getElementById("usd");
-const euro = document.getElementById("eur");
-
 const converter = (element, targetElement, targetElement2, type) => {
   // element.oninput = () => {
   //   const request = new XMLHttpRequest();
@@ -133,135 +129,136 @@ const converter = (element, targetElement, targetElement2, type) => {
   //   };
   // };
 
-  element.oninput = async () => {
+  // element.oninput = async () => {
+  //   try {
+  //     const response = await fetch("../data/converter.json");
+  //     const data = await response.json();
+
+  //     switch (type) {
+  //       case "som":
+  //         targetElement.value = (element.value / data.usd).toFixed(2);
+  //         targetElement2.value = (element.value * data.euro).toFixed(2);
+  //         break;
+  //       case "usd":
+  //         targetElement.value = (element.value * data.usd).toFixed(2);
+  //         targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
+  //         break;
+  //       case "eur":
+  //         targetElement.value = (element.value * data.usdtoeur).toFixed(2);
+  //         targetElement2.value = (element.value * data.eurtosom).toFixed(2);
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //     // element.value === "" ? (targetElement.value = "") : null;
+  //     if (element.value === "") {
+  //       targetElement.value = "";
+  //       targetElement2.value = "";
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+  // };
+
+  // converter(som, usd, euro, "som");
+  // converter(usd, som, euro, "usd");
+  // converter(euro, usd, som, "eur");
+
+  // CARD SWITCHER
+
+  const card = document.querySelector(".card");
+  const btnPrev = document.querySelector("#btn-prev");
+  const btnNext = document.querySelector("#btn-next");
+  let count = 1;
+  // const fetching = (id) => {
+  //   fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       card.innerHTML = `
+  //      <p>${json.id}</p>
+  //      <p style="color: ${json.completed ? "green" : "red"}">${json.completed}</p>
+  //      `;
+  //     });
+  // };
+  const fetching = async (id) => {
     try {
-      const response = await fetch("../data/converter.json");
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${id}`
+      );
       const data = await response.json();
 
-      switch (type) {
-        case "som":
-          targetElement.value = (element.value / data.usd).toFixed(2);
-          targetElement2.value = (element.value * data.euro).toFixed(2);
-          break;
-        case "usd":
-          targetElement.value = (element.value * data.usd).toFixed(2);
-          targetElement2.value = (element.value * data.usdtoeur).toFixed(2);
-          break;
-        case "eur":
-          targetElement.value = (element.value * data.usdtoeur).toFixed(2);
-          targetElement2.value = (element.value * data.eurtosom).toFixed(2);
-          break;
-        default:
-          break;
-      }
-      // element.value === "" ? (targetElement.value = "") : null;
-      if (element.value === "") {
-        targetElement.value = "";
-        targetElement2.value = "";
-      }
+      card.innerHTML = `
+       <p>${data.id}</p>
+       <p style="color: ${data.completed ? "green" : "red"}">${
+        data.completed
+      }</p>
+       `;
     } catch (e) {
       console.log(e);
     }
   };
-};
-
-converter(som, usd, euro, "som");
-converter(usd, som, euro, "usd");
-converter(euro, usd, som, "eur");
-
-// CARD SWITCHER
-
-const card = document.querySelector(".card");
-const btnPrev = document.querySelector("#btn-prev");
-const btnNext = document.querySelector("#btn-next");
-let count = 1;
-// const fetching = (id) => {
-//   fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
-//     .then((response) => response.json())
-//     .then((json) => {
-//       card.innerHTML = `
-//      <p>${json.id}</p>
-//      <p style="color: ${json.completed ? "green" : "red"}">${json.completed}</p>
-//      `;
-//     });
-// };
-const fetching = async (id) => {
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/todos/${id}`
-    );
-    const data = await response.json();
-
-    card.innerHTML = `
-       <p>${data.id}</p>
-       <p style="color: ${data.completed ? "green" : "red"}">${
-      data.completed
-    }</p>
-       `;
-  } catch (e) {
-    console.log(e);
-  }
-};
-fetching(count);
-
-btnNext.addEventListener("click", () => {
-  // count++;
-  // if (count < 200) {
-  //   count++;
-  //   fetching(count);
-  // } else {
-  //   count = 1;
-  //   fetching(count);
-  // }
-  count < 200 ? count++ : (count = 1);
   fetching(count);
-});
 
-btnPrev.addEventListener("click", () => {
-  // if (count > 1) {
-  //   count--;
-  //   fetching(count);
-  // } else {
-  //   count = 200;
-  //   fetching(count);
-  // }
-  count > 1 ? count-- : (count = 200);
-  fetching(count);
-});
+  btnNext.addEventListener("click", () => {
+    // count++;
+    // if (count < 200) {
+    //   count++;
+    //   fetching(count);
+    // } else {
+    //   count = 1;
+    //   fetching(count);
+    // }
+    count < 200 ? count++ : (count = 1);
+    fetching(count);
+  });
 
-// WEATHER SEARCH
+  btnPrev.addEventListener("click", () => {
+    // if (count > 1) {
+    //   count--;
+    //   fetching(count);
+    // } else {
+    //   count = 200;
+    //   fetching(count);
+    // }
+    count > 1 ? count-- : (count = 200);
+    fetching(count);
+  });
 
-const citySearchInput = document.querySelector(".cityName"),
-  // searchBtn = document.querySelector("#search"),
-  city = document.querySelector(".city"),
-  temp = document.querySelector(".temp");
-const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
-const API_KEY = "e417df62e04d3b1b111abeab19cea714";
+  // WEATHER SEARCH
 
-// citySearchInput.oninput = (event) => {
-//   fetch(`${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       city.innerHTML = data?.name ? data?.name : "Город не выбран";
-//       temp.innerHTML = data?.main?.temp
-//         ? Math.round(data?.main?.temp - 273) + "&deg;C"
-//         : "...";
-//     });
-// };
-// optional chain ?.
+  const citySearchInput = document.querySelector(".cityName"),
+    // searchBtn = document.querySelector("#search"),
+    city = document.querySelector(".city"),
+    temp = document.querySelector(".temp");
+  const WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
+  const API_KEY = "e417df62e04d3b1b111abeab19cea714";
 
-citySearchInput.oninput = async (event) => {
-  try {
-    const response = await fetch(
-      `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
-    );
-    const data = await response.json();
+  // citySearchInput.oninput = (event) => {
+  //   fetch(`${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       city.innerHTML = data?.name ? data?.name : "Город не выбран";
+  //       temp.innerHTML = data?.main?.temp
+  //         ? Math.round(data?.main?.temp - 273) + "&deg;C"
+  //         : "...";
+  //     });
+  // };
+  // optional chain ?.
 
-    city.innerHTML = data?.name ? data?.name : "Город не выбран";
-    temp.innerHTML = data?.main?.temp
-      ? Math.round(data?.main?.temp - 273) + "&deg;C"
-      : "...";
-  } catch (e) {
-    console.log(e);
-  }
+  citySearchInput.oninput = async (event) => {
+    try {
+      const response = await fetch(
+        `${WEATHER_URL}?q=${event.target.value}&appid=${API_KEY}`
+      );
+      const data = await response.json();
+
+      city.innerHTML = data?.name ? data?.name : "Город не выбран";
+      temp.innerHTML = data?.main?.temp
+        ? Math.round(data?.main?.temp - 273) + "&deg;C"
+        : "...";
+    } catch (e) {
+      console.log(e);
+    }
+  };
 };
