@@ -58,39 +58,39 @@
   position: relative;
 }
 #backLogo {
-  height: 700px;
+  height: 740px;
   position: absolute;
-  top: 20%;
-  right: 60%;
+  top: 15%;
+  right: 58%;
   animation: rotateAnimation 25s linear infinite;
 }
 
 #mainMe {
   position: absolute;
   right: 50%;
+  bottom: 10px;
   height: 100%;
   /* box-shadow: 30px 20px 20px rgba(17.13, 15.99, 15.99, 0.6); */
 }
 
 .mainText {
   position: absolute;
-  top: 40%;
-  right: 25%;
+  top: 35%;
+  right: 31%;
   height: 500px;
   width: 500px;
 }
 .mainText h2 {
   color: black;
-  font-size: 128px;
-  font-family: Montserrat;
-  font-weight: 300;
+  font-size: 100px;
+  font-family: "Pacifico", cursive;
+
   line-height: 153.6px;
-  margin-left: -54px;
 }
 .mainText p {
   color: black;
   font-size: 24px;
-  font-family: Montserrat;
+  font-family: "Pacifico", cursive;
   font-weight: 400;
   line-height: 28.8px;
   word-wrap: break-word;
@@ -100,21 +100,20 @@
 
 .colors-buttons {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   margin-top: 50px;
   position: absolute;
-  left: 75%;
-  top: 38%;
+  left: 46%;
+  top: 50%;
   gap: 5px;
 }
 
 .btn-color {
   border-radius: 5px;
-  padding: 10px;
-  border-color: rgb(118, 44, 44) !important;
-  background: var(--black);
-  color: var(--bardo);
+
+  border: 1px solid var(--bardo);
+  background: transparent;
+  color: transparent;
 }
 .btn-color:hover {
   background-color: var(--bardo);
@@ -142,6 +141,24 @@
 }
 
 #skills.active::before {
+  opacity: 1;
+}
+#projectsAll {
+  position: relative;
+}
+#projectsAll::before {
+  content: "hh";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, black 83%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease; /* Adjust the transition duration as needed */
+}
+#projectsAll.active::before {
   opacity: 1;
 }
 .react-outline,
@@ -475,15 +492,90 @@
 #projects {
   height: 100vh;
   display: flex;
-  gap: 20px;
+  gap: 50px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: -115px;
 }
+#projects:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1800px);
+  }
+}
+#projects::-webkit-scrollbar {
+  width: 0;
+}
+.mainContainer {
+  height: 800px;
+  width: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  padding-left: 120px;
+}
+.mainContainer::-webkit-scrollbar {
+  width: 10px;
+  /* display: none; */
+}
+
 .projectContainer {
-  height: 600px;
-  width: 600px;
+  height: 700px;
+  padding: 0 80px;
   box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.25);
   border: 1px rgba(0, 0, 0, 0.13) solid;
   border-radius: 16px;
   margin: 250px auto;
+  transition: transform 2s;
+  /* animation: scroll 10s linear infinite; */
+}
+.projectContainer:hover {
+  transform: translateZ(20px);
+}
+.manual-move {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 50px;
+  gap: 10px;
+  bottom: 14%;
+}
+.manual-move label {
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 9px;
+  width: 100px;
+  cursor: pointer;
+}
+.manual-move label:hover {
+  background: white;
+  padding: 5px 20px;
+  border-radius: 10px;
+  transition: 0.2s ease-out;
+}
+.inputInvisible {
+  display: none;
+}
+#radioBtn3:checked ~ .first {
+  margin-left: -1050px;
+  transition: all 1s;
+}
+#radioBtn2:checked ~ .first {
+  margin-left: -520px;
+  transition: all 1s;
+}
+#radioBtn1:checked ~ .first {
+  margin-left: 0px;
+
+  transition: all 1s;
 }
 .weatherapp {
   display: flex;
@@ -513,6 +605,7 @@
   font-size: 12px;
   text-align: center;
   margin-top: 10px;
+  color: black;
 }
 .weatherapp p {
   font-size: 25px;
@@ -546,6 +639,27 @@
 }
 .converter input {
   box-shadow: 0px 2px 5px 5px rgb(189, 189, 189);
+}
+
+/* Checker */
+.checker h3 {
+  color: black;
+}
+.checker input {
+  box-shadow: 0px 2px 5px 5px rgb(189, 189, 189);
+}
+.green {
+  color: #15be05;
+}
+.red {
+  color: red;
+}
+#error {
+  font-size: 15px;
+  color: #222;
+  border: 1px dotted grey;
+  border-radius: 10px;
+  padding: 5px;
 }
 /* FOOTER */
 
@@ -643,7 +757,7 @@
   text-decoration: underline;
 }
 
-.slide.active_slide {
+.slide._slide {
   display: block;
 }
 

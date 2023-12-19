@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Montserrat:wght@400;500&family=Raleway:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Montserrat:wght@400;500&family=Raleway:wght@400;500&=Indie+Flower&family=Pacifico&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -35,7 +36,7 @@
                 <a href="pages/lessons.html">Skills</a>
               </li>
               <li class="menu_link">
-                <a href="pages/cards.html">Projects</a>
+                <a href="#projects">Projects</a>
               </li>
             </ul>
             <button class="btn" id="btn-get">Click me!</button>
@@ -167,7 +168,7 @@
           </div>
         </div>
       </div> -->
-      <div id="skills">
+      <section id="skills">
         <div class="title">
           <span id="firstPartTitle">Sk</span><span id="secondPartTitle">i</span
           ><span id="firstPartTitle">lls</span>
@@ -226,49 +227,104 @@
             <p>API</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div id="projects">
-        <div class="projectContainer">
-          <div class="weatherapp">
-            <p>Weather App</p>
-            <div class="weatherimage"></div>
-            <input id="city" type="text" placeholder="Enter city name" />
-            <div class="cityInfo">
-              <span class="city"></span>
-              <hr />
-              <span class="temp"></span>
+      <section id="projectsAll">
+        <div class="title">
+          <span id="firstPartTitle">P</span><span id="secondPartTitle">ro</span
+          ><span id="firstPartTitle">jects</span>
+        </div>
+        <div id="projects">
+          <div class="mainContainer">
+            <input
+              class="inputInvisible"
+              type="radio"
+              name="radio-btn"
+              id="radioBtn1"
+            />
+            <input
+              class="inputInvisible"
+              type="radio"
+              name="radio-btn"
+              id="radioBtn2"
+            />
+            <input
+              class="inputInvisible"
+              type="radio"
+              name="radio-btn"
+              id="radioBtn3"
+            />
+
+            <div class="projectContainer first">
+              <div class="weatherapp">
+                <p>Weather App</p>
+                <div class="weatherimage"></div>
+                <input id="city" type="text" placeholder="Enter city name" />
+                <div class="cityInfo">
+                  <span class="city"></span>
+                  <hr />
+                  <span class="temp"></span>
+                </div>
+                <div class="description">
+                  created using an API provides real-time weather information
+                  based on location data.
+                </div>
+              </div>
             </div>
-            <div class="description">
-              created using an API provides real-time weather information based
-              on location data.
+
+            <div class="projectContainer">
+              <div class="converter">
+                <h3>Converter</h3>
+                <div class="inner-converter">
+                  <div class="som">
+                    <label for="som">Som</label>
+                    <input type="number" id="som" />
+                  </div>
+                  <div class="usd">
+                    <label for="usd">Usd</label>
+                    <input type="number" id="usd" />
+                  </div>
+                  <div class="euro">
+                    <label for="euro">Euro</label>
+                    <input type="number" id="euro" />
+                  </div>
+                </div>
+                <div class="description">
+                  A currency converter app that swiftly converts USD to Euro and
+                  Som, utilizing real-time exchange rates fetched from a JSON
+                  file.
+                </div>
+              </div>
+            </div>
+
+            <div class="projectContainer">
+              <div class="checker">
+                <div class="inner-converter">
+                  <h3>Phone Checker</h3>
+                  <input
+                    id="phone-input"
+                    type="text"
+                    placeholder="Enter phone number"
+                  />
+                  <button class="btn" id="phone_button">Check</button>
+                  <span id="numberspan"></span>
+                  <span id="error"></span>
+                  <div class="description">
+                    A phone checker using regular expressions is a program or
+                    script designed to validate and verify phone numbers based
+                    on predefined patterns using regular expressions.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="projectContainer">
-          <div class="converter">
-            <h3>Converter</h3>
-            <div class="inner-converter">
-              <div class="som">
-                <label for="som">Som</label>
-                <input type="number" id="som" />
-              </div>
-              <div class="usd">
-                <label for="usd">Usd</label>
-                <input type="number" id="usd" />
-              </div>
-              <div class="euro">
-                <label for="euro">Euro</label>
-                <input type="number" id="euro" />
-              </div>
-            </div>
-            <div class="description">
-              created using an API provides real-time weather information based
-              on location data.
-            </div>
+          <div class="manual-move">
+            <label for="radioBtn1"></label>
+            <label for="radioBtn2"></label>
+            <label for="radioBtn3"></label>
           </div>
         </div>
-      </div>
+      </section>
       <div class="footer">
         <div class="inner-footer">
           <div class="links">

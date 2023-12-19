@@ -14,11 +14,20 @@ const navObserver = new IntersectionObserver(
 );
 
 navObserver.observe(scrollWatcher);
-
 //Skills ointersectionobserver
 
-const skills = document.querySelector("#skills");
-
+// const observer = new IntersectionObserver(
+//   (entities) => {
+//     entities.forEach((entity) => {
+//       if (!entity.isIntersecting) {
+//         return;
+//       }
+//       entity.target.classList.toggle("inverse");
+//     });
+//   },
+//   { rootMargin: "-150px" }
+// );
+// observer.observe(sections);
 // const observer = new IntersectionObserver(
 //   (entities) => {
 //     entities.forEach((entity) => {
@@ -38,10 +47,17 @@ const skills = document.querySelector("#skills");
 document.addEventListener("scroll", () => {
   var scroll_position = window.scrollY;
 
-  if (scroll_position > 500) {
+  var skills = document.getElementById("skills");
+  var projects = document.getElementById("projectsAll");
+  if (scroll_position > 500 && scroll_position < 1500) {
     skills.classList.add("active");
+    projects.classList.remove("active");
+  } else if (scroll_position > 1500) {
+    skills.classList.remove("active");
+    projects.classList.add("active");
   } else {
     skills.classList.remove("active");
+    projects.classList.remove("active");
   }
 });
 
@@ -150,7 +166,7 @@ cityInput.oninput = async (event) => {
       'url("https://webstockreview.net/images/clipart-cloud-animated-gif-6.gif")'; // Replace with the correct path for your sun image
   } else {
     weatherIcon.style.backgroundImage =
-      'url("https://i.pinimg.com/originals/54/d3/ae/54d3ae04cae803cafc21389dfd31fc88.gif")';
+      'url("https://media.tenor.com/11pJ8Xsb9nMAAAAi/sun-behind-large-cloud-nature.gif")';
   }
 };
 
@@ -201,3 +217,25 @@ const converter = (element, targetValue, targetValue2, type) => {
 converter(som, usd, euro, "som");
 converter(usd, som, euro, "usd");
 converter(euro, usd, som, "eur");
+
+// Phone checker
+const numberInput = document.getElementById("phone-input");
+const numberButton = document.getElementById("phone_button");
+const numberSpan = document.querySelector("#numberspan");
+const errorspan = document.getElementById("error");
+const regEx = /^\+996[2579]\d{2}\d{2}-\d{2}-\d{2}$/; // Regular expression to match "999"
+
+// Attach a click event handler to the button
+numberButton.onclick = () => {
+  // Check if the value in the input matches the regular expression
+  if (regEx.test(numberInput.value)) {
+    // If it matches, insert a new span element with the text "OK" after the button
+    numberSpan.textContent = "OK";
+    numberSpan.style.color = "green";
+  } else {
+    numberSpan.textContent = "NOT OK";
+
+    numberSpan.style.color = "red";
+    errorspan.textContent = "hint: +996[2579]d{2}d{2}-d{2}-d{2}";
+  }
+};

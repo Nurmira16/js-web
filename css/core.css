@@ -20,7 +20,7 @@ body {
   font-size: 20px;
   cursor: pointer;
   border: 1px solid var(--bardo);
-  background: black;
+  background: transparent;
   color: var(--bardo);
   border-radius: 8px;
 }
@@ -53,12 +53,11 @@ h1 {
 }
 
 h2 {
-  text-align: center;
-  font-size: 30px;
   color: white;
   margin: 0 auto;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-weight: lighter;
+  /* text-transform: uppercase; */
+  /* font-weight: 00; */
 }
 
 h3 {
@@ -146,4 +145,7 @@ input {
   --black: black;
   --bardo: #a90d0d;
   --white: #ffff;
+}
+.inverse {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, black 83%);
 }
